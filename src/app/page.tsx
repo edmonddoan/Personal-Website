@@ -79,7 +79,7 @@ export default function Component() {
               { id: 1, title: "MEV Arbitrage", description: "A decentralized application built on Ethereum." },
               { id: 2, title: "Social AI", description: "An interactive AI Avatar that can be used for building and developing social skills for every day scenarios." },
               { id: 3, title: "NFT Coin Pusher", description: "A platform for buying and selling unique digital assets." },
-              { id: 4, title: "LORAs", description: "An automated tool for auditing smart contracts." }
+              { id: 4, title: "Training LORAs", description: "An automated tool for auditing smart contracts." }
             ].map((project) => (
               <motion.div 
                 key={project.id}
