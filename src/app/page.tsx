@@ -1,101 +1,105 @@
-import Image from "next/image";
+'use client'; // Add this directive at the top
 
-export default function Home() {
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Button } from "@/components/ui/button"
+import { Github, Linkedin, Mail } from 'lucide-react'
+
+export default function Component() {
+  const [email, setEmail] = useState('')
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-gray-950 text-gray-200 font-sans">
+      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
+        <motion.h1 
+          className="text-2xl font-bold text-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          Edmond Doan
+        </motion.h1>
+        <nav className="space-x-6">
+          <a href="#about" className="hover:text-blue-400 transition-colors">About</a>
+          <a href="#projects" className="hover:text-blue-400 transition-colors">Projects</a>
+          <a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a>
+        </nav>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <main className="container mx-auto px-4 py-20">
+        <section id="about" className="mb-20">
+          <motion.h2 
+            className="text-5xl font-bold mb-6 text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Software Engineer
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-8 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Read our docs
-          </a>
-        </div>
+            I specialize in <span className="text-orange-400">Blockchain Development</span>  and <span className="text-blue-400">Generative AI</span> focusing on building 
+            decentralized applications and exploring AI-driven solutions. 
+          </motion.p>
+          <motion.div 
+            className="flex space-x-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="icon" className="text-gray-200 border-gray-200 hover:bg-blue-400 hover:text-white">
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </Button>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="icon" className="text-gray-200 border-gray-200 hover:bg-blue-400 hover:text-white">
+                <Linkedin className="h-5 w-5" />
+                <span className="sr-only">LinkedIn</span>
+              </Button>
+            </a>
+            <a href="mailto:jane@example.com">
+              <Button variant="outline" size="icon" className="text-gray-200 border-gray-200 hover:bg-blue-400 hover:text-white">
+                <Mail className="h-5 w-5" />
+                <span className="sr-only">Email</span>
+              </Button>
+            </a>
+          </motion.div>
+        </section>
+
+        <section id="projects" className="mb-20">
+          <h2 className="text-3xl font-bold mb-6 text-white">Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              { id: 1, title: "MEV Arbitrage", description: "A decentralized application built on Ethereum." },
+              { id: 2, title: "Social AI", description: "An interactive AI Avatar that can be used for building and developing social skills for every day scenarios." },
+              { id: 3, title: "NFT Coin Pusher", description: "A platform for buying and selling unique digital assets." },
+              { id: 4, title: "LORAs", description: "An automated tool for auditing smart contracts." }
+            ].map((project) => (
+              <motion.div 
+                key={project.id}
+                className="bg-gray-900 p-6 rounded-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: project.id * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+                <p className="text-gray-400 mb-4">{project.description}</p>
+                <Button variant="link" className="text-blue-400 hover:text-blue-300 p-0">View Project</Button>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+  
     </div>
-  );
+  )
 }
